@@ -1,0 +1,29 @@
+<h1><%= @item.title %></h1>
+
+<p><%= @item.description %></p>
+<p><%= @item.reserve_price %></p>
+<p>user: <%= @item.user_id %></p>
+
+<h2>Add a Bid</h2>
+<% if session[:user_id] == @item.user_id %>
+<p>
+  Cannot Bid on own Item
+</p>
+<% else %>
+<%= form_for [@item, @bid] do |f| %>
+  <div>
+    <%= f.label :bid %>
+    <%= f.text_field :bid %>
+  </div>
+  <%= f.submit %>
+<% end %>
+<% end %>
+
+
+<h2>Bids</h2>
+
+<% @item.bids.each do |bid| %>
+  <p><%= bid.bid %></p>
+  <p><%= bid.created_at %></p>
+  <hr>
+<% end %>

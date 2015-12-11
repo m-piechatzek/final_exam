@@ -1,0 +1,29 @@
+<h1>Create New Auction</h1>
+
+<% if @item.errors.any? %>
+  <ul>
+    <% @item.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @item do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div>
+    <%= f.label :end_date %>
+    <%= f.date_select :end_date  %>
+  </div>
+  <div>
+    <%= f.label :reserve_price %>
+    <%= f.text_field :reserve_price %>
+  </div>
+  <%= f.submit %>
+<% end %>

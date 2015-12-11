@@ -1,0 +1,12 @@
+<h2>Welcome to Biddr</h2>
+<% @items.each do |item| %>
+  <div class="well">
+
+    <%= link_to item.title, item_path(item) %>
+    <% item.bids.each do |bid| %>
+      <p>Bid: <%= bid.bid %></p>
+      <p>Bid created at: <%= bid.created_at %></p>
+      <hr>
+    <% end %>
+  </div>
+<% end %>

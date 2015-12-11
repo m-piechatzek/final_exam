@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Biddr2</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <% if user_signed_in? %>
+      Hello <%= current_user.first_name %> <%= current_user.last_name %>,
+      <%= link_to "Create Item", new_item_path %>
+      <%= link_to "Logout", sessions_path, method: :delete,
+               data: {confirm: "are you sure you want to log out?"}%>
+    <% else %>
+      <%= link_to "Login", new_session_path %> |
+      <%= link_to "Sign Up", new_user_path %>
+    <% end %>
+<%= link_to "Homebase", root_path %>
+    <hr>
+<%= yield %>
+
+</body>
+</html>
